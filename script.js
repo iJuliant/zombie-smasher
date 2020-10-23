@@ -1,9 +1,12 @@
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
 const zombies = document.querySelectorAll('.zombie');
+let timeLeft = document.querySelector('#timeleft')
 let lastHole;
 let timeUp = false;
 let score = 0;
+let curentTime = timeLeft.innerHTML
+
 
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
@@ -33,12 +36,22 @@ function peep() {
 }
 
 function startGame() {
+    curentTime = 30
     scoreBoard.textContent = 0;
     timeUp = false;
+    scoreBoard.innerHTML = 0
     score = 0;
     peep();
-    setTimeout(() => timeUp = true, 15000) //show random zombies for 15 seconds
+    setTimeout(() => timeUp = true, 30000) //show random zombies for 30 seconds
 }
+let interval = setInterval(() =>{
+    curentTime --
+    timeLeft.innerHTML = curentTime
+     if(curentTime === 0){
+         clearInterval(interval)
+         alert(`you kill ${scoreBoard.innerHTML} zombies, boss tha!`)
+     }
+ }, 1000)
 
 function smash(e){
     if(!e.isTrusted) return; 

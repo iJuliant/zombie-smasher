@@ -49,7 +49,7 @@ let interval = setInterval(() =>{
     timeLeft.innerHTML = curentTime
      if(curentTime === 0){
          clearInterval(interval)
-         alert(`you kill ${scoreBoard.innerHTML} zombies, boss tha!`)
+         alert(`you killed ${scoreBoard.innerHTML} zombies, boss tha!`)
      }
  }, 1000)
 
